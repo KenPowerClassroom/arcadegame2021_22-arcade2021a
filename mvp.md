@@ -19,7 +19,7 @@
 - Smart "AI"
 
 ## Stories for MVP
-- As a user I want to identify which pokemon I am currently using when I attack so that I can swap pokemon more efficiently
+- As a user I want to see a visual representation of my attack going towards the enemy so that I can aim more easily
 - As a user I want to be able to see my pokemon displayed so that I can have visual feedback when I swap
 - As a developer I want to implement a random selection system for enemy pokemon to make the experience less repetitive for the user
 - As a user I want to know when a pokemon is about to attack me so that I can get a sense of urgency to attack it back
