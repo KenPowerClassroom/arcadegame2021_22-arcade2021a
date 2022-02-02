@@ -18,6 +18,8 @@ public:
 	sf::Sprite& getSprite() { return sprite; }
 
 private:
+	static int pokemonCreated;
+
 	sf::Sprite sprite;
 	//sf::Texture& texture;
 
