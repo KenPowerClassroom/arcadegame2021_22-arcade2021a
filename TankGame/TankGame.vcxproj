@@ -19,35 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Angle.h" />
-    <ClInclude Include="src\Background.h" />
+    <ClInclude Include="Pokemon.h" />
     <ClInclude Include="src\Game.h" />
-    <ClInclude Include="src\GameLoop.h" />
-    <ClInclude Include="src\LevelLoader.h" />
-    <ClInclude Include="src\MathUtility.h" />
-    <ClInclude Include="src\ScreenSize.h" />
-    <ClInclude Include="src\SpriteEntity.h" />
-    <ClInclude Include="src\Tank.h" />
-    <ClInclude Include="src\TankController.h" />
-    <ClInclude Include="src\Texture.h" />
-    <ClInclude Include="src\Walls.h" />
-    <ClInclude Include="src\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Angle.cpp" />
+    <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\LevelLoader.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Tank.cpp" />
-    <ClCompile Include="src\TankController.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="resources\levels\level1.yaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="resources\images\Background.jpg" />
-    <Image Include="resources\images\E-100.png" />
-    <Image Include="resources\images\SpriteSheet.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -151,7 +129,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SFML_SDK)\include;yaml-cpp\;.\yaml-cpp\;.</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SFML_SDK)\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
