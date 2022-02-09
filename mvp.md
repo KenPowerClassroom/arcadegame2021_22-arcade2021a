@@ -7,7 +7,7 @@
 - Player health visible on screen
 - Enemy pokemon damaging player health if not attacked fast enough
 - Basic sprites and background
-- Ability to lose
+- Ability to losE
 
 ## Out of scope
 - Blood splatter for "fainting" pokemon
