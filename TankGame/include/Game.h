@@ -4,8 +4,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Pokemon.h"
-#include "projectile.h"
-#include "Thor/Vectors.hpp"
 
 class Game
 {
@@ -26,18 +24,13 @@ private:
 	void loadTextures();
 	void collisions();
 	sf::Vector2f getMousePosition();
-	void shootProjectile();
 
 	//Mouse
 	sf::Vector2f mousePosition{ 0,0 };
-	sf::Vector2f mouseDirection{ 0,0 };
 
 	//Player Pokemon
 	Pokemon playerPokemon[6];
 	int currentPokemon{ 0 };
-
-	//Projectiles
-	projectile attackProjectile;
 
 	//Bush
 	sf::RectangleShape bushShape;
