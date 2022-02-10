@@ -76,34 +76,7 @@ void Game::processKeys(sf::Event t_event)
 	{
 		m_exitGame = true;
 	}
-	if (sf::Keyboard::Q == t_event.key.code)
-	{
-		currentPokemon = 0;
-	}
-	if (sf::Keyboard::W == t_event.key.code)
-	{
-		currentPokemon = 1;
-	}
-	if (sf::Keyboard::E == t_event.key.code)
-	{
-		currentPokemon = 2;
-	}
-	if (sf::Keyboard::A == t_event.key.code)
-	{
-		currentPokemon = 3;
-	}
-	if (sf::Keyboard::S == t_event.key.code)
-	{
-		currentPokemon = 4;
-	}
-	if (sf::Keyboard::D == t_event.key.code)
-	{
-		currentPokemon = 5;
-	}
-	if (sf::Keyboard::Space == t_event.key.code)
-	{
-		shootProjectile();
-	}
+	
 }
 
 /// <summary>
@@ -145,7 +118,7 @@ void Game::render()
 
 
 	//DEBUG
-	playerPokemon[currentPokemon].debugDraw(m_window);
+	player.draw();
 	attackProjectile.debugDraw(m_window);
 	m_window.draw(bushShape);
 
@@ -200,9 +173,9 @@ sf::Vector2f Game::getMousePosition()
 
 void Game::shootProjectile()
 {
-	mouseDirection = playerPokemon[currentPokemon].getPosition() - mousePosition;
+	//mouseDirection = playerPokemon[currentPokemon].getPosition() - mousePosition;
 	mouseDirection = thor::unitVector(mouseDirection);
 
-	attackProjectile.setPos(playerPokemon[currentPokemon].getPosition());
+	//attackProjectile.setPos(playerPokemon[currentPokemon].getPosition());
 	attackProjectile.setDirection(mouseDirection);
 }

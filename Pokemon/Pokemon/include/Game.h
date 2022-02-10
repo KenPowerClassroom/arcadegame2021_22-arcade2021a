@@ -4,6 +4,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Pokemon.h"
+#include "SFMLDrawable.h"
+#include <memory>
 
 class Game
 {
@@ -29,8 +31,9 @@ private:
 	sf::Vector2f mousePosition{ 0,0 };
 
 	//Player Pokemon
-	Pokemon playerPokemon[6];
-	int currentPokemon{ 0 };
+	SFMLDrawable playerSprite;
+	std::unique_ptr<Pokemon> player = std::make_unique<Pokemon>(playerSprite);
+	
 
 	//Bush
 	sf::RectangleShape bushShape;
