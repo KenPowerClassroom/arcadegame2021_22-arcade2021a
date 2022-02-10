@@ -1,3 +1,4 @@
+#pragma once
 #include "Drawable.h"
 #include <SFML/Graphics.hpp>
 
@@ -9,5 +10,5 @@ private:
 	sf::RenderWindow& window;
 public:
 	SFMLDrawable(const char* path, sf::RenderWindow& _window);
-	void Draw(int xPos, int yPos);
+	virtual void Draw(int xPos, int yPos);
 };

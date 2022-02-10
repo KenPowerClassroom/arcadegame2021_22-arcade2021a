@@ -147,7 +147,6 @@
     <ClInclude Include="include\PokemonController.h" />
     <ClInclude Include="include\projectile.h" />
     <ClInclude Include="include\SFMLDrawable.h" />
-    <ClInclude Include="src\Game.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />

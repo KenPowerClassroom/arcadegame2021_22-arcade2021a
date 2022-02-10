@@ -32,7 +32,7 @@ private:
 
 	//Player Pokemon
 	SFMLDrawable playerSprite;
-	std::unique_ptr<Pokemon> player = std::make_unique<Pokemon>(playerSprite);
+	std::unique_ptr<Pokemon> player = std::make_unique<Pokemon>( playerSprite);
 	
 
 	//Bush

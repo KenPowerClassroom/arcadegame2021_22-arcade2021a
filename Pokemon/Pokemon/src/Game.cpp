@@ -5,7 +5,8 @@
 /// </summary>
 Game::Game() :
 	m_window{ sf::VideoMode{ 1200U, 900U, 32U }, "SFML Game" },
-	m_exitGame{ false } //when true game will exit
+	m_exitGame{ false }, //when true game will exit
+	playerSprite{ playerSprite }
 {
 	loadTextures(); // load background
 }
@@ -106,7 +107,7 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.close();
 	}
 	mousePosition = getMousePosition();
-	attackProjectile.moveBullet();
+	//attackProjectile.moveBullet();
 }
 
 /// <summary>
@@ -118,8 +119,8 @@ void Game::render()
 
 
 	//DEBUG
-	player.draw();
-	attackProjectile.debugDraw(m_window);
+	player->draw();
+	//attackProjectile.debugDraw(m_window);
 	m_window.draw(bushShape);
 
 	m_window.display();
@@ -171,11 +172,11 @@ sf::Vector2f Game::getMousePosition()
 	return mousePosition;
 }
 
-void Game::shootProjectile()
-{
+//void Game::shootProjectile()
+//{
 	//mouseDirection = playerPokemon[currentPokemon].getPosition() - mousePosition;
-	mouseDirection = thor::unitVector(mouseDirection);
+	//mouseDirection = thor::unitVector(mouseDirection);
 
 	//attackProjectile.setPos(playerPokemon[currentPokemon].getPosition());
-	attackProjectile.setDirection(mouseDirection);
-}
+	//attackProjectile.setDirection(mouseDirection);
+//}
