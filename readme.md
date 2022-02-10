@@ -1,3 +1,5 @@
+[![Build and Test](https://github.com/KenPowerClassroom/arcadegame2021_22-arcade2021a/actions/workflows/main.yml/badge.svg)](https://github.com/KenPowerClassroom/arcadegame2021_22-arcade2021a/actions/workflows/main.yml)
+
 ![Logo](./RepoResc/logo.png)
 # Introduction
 ## Project Team
