@@ -1,31 +1,18 @@
-#ifndef POKEMON_HPP
-#define POKEMON_HPP
-
-#include <SFML/Graphics.hpp>
+#pragma once
+#include "Drawable.h"
+#include "PokemonController.h"
 
 class Pokemon
 {
 public:
-	Pokemon();
+	Pokemon(Drawable& _pokemon);
 	void inilitalize();
-	void draw(sf::RenderWindow& t_window);
-	void debugDraw(sf::RenderWindow& t_window);
+	void draw();
+	void update();
 
-	void setXPos(float t_x) { sprite.setPosition(t_x, sprite.getPosition().y); }
-	void setYPos(float t_y) { sprite.setPosition(sprite.getPosition().x, t_y); }
-
-	sf::Vector2f getPosition() { return sprite.getPosition(); }
-	sf::Sprite& getSprite() { return sprite; }
-
+	int currentPokemon{ 0 };
 private:
-	static int pokemonCreated;
-
-	sf::Sprite sprite;
-	//sf::Texture& texture;
-
-	//DEBUG
-
-	sf::RectangleShape shape;
+	
+	PokemonController controller;
+	Drawable& pokemon;
 };
-
-#endif

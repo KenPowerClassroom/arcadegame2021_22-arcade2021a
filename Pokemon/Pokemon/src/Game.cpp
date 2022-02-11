@@ -5,7 +5,8 @@
 /// </summary>
 Game::Game() :
 	m_window{ sf::VideoMode{ 1200U, 900U, 32U }, "SFML Game" },
-	m_exitGame{ false } //when true game will exit
+	m_exitGame{ false }, //when true game will exit
+	playerSprite{ playerSprite }
 {
 	loadTextures(); // load background
 }
@@ -76,34 +77,7 @@ void Game::processKeys(sf::Event t_event)
 	{
 		m_exitGame = true;
 	}
-	if (sf::Keyboard::Q == t_event.key.code)
-	{
-		currentPokemon = 0;
-	}
-	if (sf::Keyboard::W == t_event.key.code)
-	{
-		currentPokemon = 1;
-	}
-	if (sf::Keyboard::E == t_event.key.code)
-	{
-		currentPokemon = 2;
-	}
-	if (sf::Keyboard::A == t_event.key.code)
-	{
-		currentPokemon = 3;
-	}
-	if (sf::Keyboard::S == t_event.key.code)
-	{
-		currentPokemon = 4;
-	}
-	if (sf::Keyboard::D == t_event.key.code)
-	{
-		currentPokemon = 5;
-	}
-	if (sf::Keyboard::Space == t_event.key.code)
-	{
-		shootProjectile();
-	}
+	
 }
 
 /// <summary>
@@ -133,7 +107,7 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.close();
 	}
 	mousePosition = getMousePosition();
-	attackProjectile.moveBullet();
+	//attackProjectile.moveBullet();
 }
 
 /// <summary>
@@ -145,8 +119,8 @@ void Game::render()
 
 
 	//DEBUG
-	playerPokemon[currentPokemon].debugDraw(m_window);
-	attackProjectile.debugDraw(m_window);
+	player->draw();
+	//attackProjectile.debugDraw(m_window);
 	m_window.draw(bushShape);
 
 	m_window.display();
@@ -198,11 +172,11 @@ sf::Vector2f Game::getMousePosition()
 	return mousePosition;
 }
 
-void Game::shootProjectile()
-{
-	mouseDirection = playerPokemon[currentPokemon].getPosition() - mousePosition;
-	mouseDirection = thor::unitVector(mouseDirection);
+//void Game::shootProjectile()
+//{
+	//mouseDirection = playerPokemon[currentPokemon].getPosition() - mousePosition;
+	//mouseDirection = thor::unitVector(mouseDirection);
 
-	attackProjectile.setPos(playerPokemon[currentPokemon].getPosition());
-	attackProjectile.setDirection(mouseDirection);
-}
+	//attackProjectile.setPos(playerPokemon[currentPokemon].getPosition());
+	//attackProjectile.setDirection(mouseDirection);
+//}

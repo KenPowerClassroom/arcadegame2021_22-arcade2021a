@@ -88,12 +88,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SFML_SDK)/include; $(ProjectDir)/include; $(ProjectDir)/include/Thor; $(ProjectDir)/include/Aurora;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SFML_SDK)/include; $(ProjectDir)/include; $(ProjectDir)/include/Thor; $(ProjectDir)/include/Aurora; $(ProjectDir); $(ProjectDir)/src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SFML_SDK)/lib; $(ProjectDir)/lib;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SFML_SDK)/lib; $(ProjectDir)/lib; $(ProjectDir); $(ProjectDir)/src;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -141,16 +141,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\Drawable.h" />
     <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\Gizmos.h" />
+    <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\Pokemon.h" />
+    <ClInclude Include="include\PokemonController.h" />
     <ClInclude Include="include\projectile.h" />
-    <ClInclude Include="src\Game.h" />
+    <ClInclude Include="include\SFMLDrawable.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Pokemon.cpp" />
+    <ClCompile Include="src\PokemonController.cpp" />
     <ClCompile Include="src\projectile.cpp" />
+    <ClCompile Include="src\SFMLDrawable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
