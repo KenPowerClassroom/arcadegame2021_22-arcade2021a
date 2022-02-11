@@ -1,9 +1,10 @@
 #pragma once
+#include "Gizmos.h"
 
 class PokemonController
 {
 public:
+	PokemonController() {}
 	void Update();
-	int x;
-	int y;
+	Gizmos::Vector2 position;
 };

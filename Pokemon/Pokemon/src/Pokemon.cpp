@@ -12,5 +12,10 @@ void Pokemon::inilitalize()
 
 void Pokemon::draw()
 {
-	pokemon.Draw(controller.x, controller.y);
+	pokemon.Draw(controller.position.x, controller.position.y);
+}
+
+void Pokemon::update()
+{
+	controller.Update();
 }

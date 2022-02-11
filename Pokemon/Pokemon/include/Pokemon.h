@@ -1,6 +1,4 @@
-#ifndef POKEMON_HPP
-#define POKEMON_HPP
-
+#pragma once
 #include "Drawable.h"
 #include "PokemonController.h"
 
@@ -10,6 +8,7 @@ public:
 	Pokemon(Drawable& _pokemon);
 	void inilitalize();
 	void draw();
+	void update();
 
 	int currentPokemon{ 0 };
 private:
@@ -17,5 +16,3 @@ private:
 	PokemonController controller;
 	Drawable& pokemon;
 };
-
-#endif
