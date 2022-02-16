@@ -6,7 +6,9 @@
 Game::Game() :
 	m_window{ sf::VideoMode{ 1200U, 900U, 32U }, "SFML Game" },
 	m_exitGame{ false }, //when true game will exit
-	playerSprite{ playerSprite }
+	playerSprite{ "resources/images/pikachu.png",m_window},
+	playerInput{m_window},
+	player{ std::make_unique<Pokemon>(playerSprite, playerInput) }
 {
 	loadTextures(); // load background
 }
@@ -63,6 +65,7 @@ void Game::processEvents()
 		{
 			processKeyReleases(newEvent);
 		}
+		player.get()->pollInput();
 	}
 }
 

@@ -3,9 +3,10 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <memory>
 #include "Pokemon.h"
 #include "SFMLDrawable.h"
-#include <memory>
+#include "SFMLInput.h"
 
 class Game
 {
@@ -32,7 +33,8 @@ private:
 
 	//Player Pokemon
 	SFMLDrawable playerSprite;
-	std::unique_ptr<Pokemon> player = std::make_unique<Pokemon>( playerSprite);
+	SFMLInput playerInput;
+	std::unique_ptr<Pokemon> player;
 	
 
 	//Bush
