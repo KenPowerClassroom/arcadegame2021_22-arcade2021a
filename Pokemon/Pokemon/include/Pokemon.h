@@ -1,18 +1,25 @@
 #pragma once
-#include "Drawable.h"
+#include "SFMLDrawable.h"
 #include "PokemonController.h"
+#include "Gizmos.h"
+#include "Types.h"
+
+using namespace Gizmos;
 
 class Pokemon
 {
 public:
-	Pokemon(Drawable& _pokemon);
+	Pokemon();
 	void inilitalize();
-	void draw();
+	void draw(sf::RenderWindow& t_window);
 	void update();
+	void changeType(int t_type);
+	Type getType() { return currentType; }
 
-	int currentPokemon{ 0 };
 private:
-	
+
+	Type currentType{ Type::Fire };
 	PokemonController controller;
-	Drawable& pokemon;
+	SFMLDrawable pokemon;
+
 };
