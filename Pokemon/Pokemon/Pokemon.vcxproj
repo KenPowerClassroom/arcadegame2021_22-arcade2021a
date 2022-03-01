@@ -118,12 +118,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Archi\Desktop\arcadegame2021_22-arcade2021a\Pokemon\Pokemon\include;C:\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SFML_SDK)/include; $(ProjectDir)/include; $(ProjectDir)/include/Thor; $(ProjectDir)/include/Aurora; $(ProjectDir); $(ProjectDir)/src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Archi\Desktop\arcadegame2021_22-arcade2021a\Pokemon\Pokemon\lib;C:\SFML-2.5.1\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SFML_SDK)/lib; $(ProjectDir)/lib; $(ProjectDir); $(ProjectDir)/src;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -153,10 +153,10 @@
     <ClInclude Include="include\PokemonController.h" />
     <ClInclude Include="include\projectile.h" />
     <ClInclude Include="include\SFMLDrawable.h" />
-    <ClInclude Include="include\Types.h" />
+    <ClInclude Include="SFMLInput.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\EnemyPokemon.cpp" />
+    <ClCompile Include="SFMLInput.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Pokemon.cpp" />

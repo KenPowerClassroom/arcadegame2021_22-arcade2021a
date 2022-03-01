@@ -3,12 +3,13 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <memory>
 #include "Pokemon.h"
 #include "EnemyPokemon.h"
 #include "PokemonBar.h"
 #include "projectile.h"
 #include "SFMLDrawable.h"
-#include <memory>
+#include "SFMLInput.h"
 
 class Game
 {
@@ -35,20 +36,9 @@ private:
 	Vector2 mousePosition;
 
 	//Player Pokemon
-	Pokemon playerPokemon;
-	PokemonBar pokemonBar;
-	int currentPokemon{ 1 };
-
-	//Player attack
-	const int MAX_ATTACKS{ 10 };
-	projectile playerAttack[10];
-	int currentAttack{ 0 };
-
-	//Enemy Pokemon
-	EnemyPokemon enemyPokemon;
-
-	//SFMLDrawable playerPokenonSprite;
-	//std::unique_ptr<Pokemon> playerPokemon = std::make_unique<Pokemon>(playerPokenonSprite);
+	SFMLDrawable playerSprite;
+	SFMLInput playerInput;
+	std::unique_ptr<Pokemon> player;
 	
 
 	//Bush

@@ -1,6 +1,7 @@
 #include "Pokemon.h"
 
-Pokemon::Pokemon()
+Pokemon::Pokemon(Drawable& _pokemon, Input& _input)
+	: pokemon{ _pokemon }, input{ _input }
 {
 	inilitalize();
 }
@@ -22,32 +23,10 @@ void Pokemon::update()
 	controller.Update();
 }
 
-void Pokemon::changeType(int t_type)
+void Pokemon::pollInput()
 {
-	switch (t_type)
+	if (input.KeyPressed(input.Space))
 	{
-	case 1:
-		pokemon.setDrawableColor(sf::Color::Red);
-		currentType = Type::Fire;
-		break;
-	case 2:
-		pokemon.setDrawableColor(sf::Color::Green);
-		currentType = Type::Grass;
-		break;
-	case 3:
-		pokemon.setDrawableColor(sf::Color::Blue);
-		currentType = Type::Water;
-		break;
-	case 4:
-		pokemon.setDrawableColor(sf::Color::Black);
-		break;
-	case 5:
-		pokemon.setDrawableColor(sf::Color::Magenta);
-		break;
-	case 6:
-		pokemon.setDrawableColor(sf::Color::Yellow);
-		break;
-	default:
-		break;
+		std::cout << "Space pressed\n";
 	}
 }
