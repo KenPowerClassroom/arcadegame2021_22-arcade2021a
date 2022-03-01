@@ -8,7 +8,7 @@ class SFMLInput : public Input
 {
 	sf::RenderWindow& window;
 public:
-	SFMLInput(sf::RenderWindow& _window) : window{_window} {}
+	SFMLInput(sf::RenderWindow& _window) : window{ _window } {}
 	bool KeyPressed(Key k);
 	Gizmos::Vector2 GetMousePos();
 };

@@ -6,10 +6,10 @@ namespace Gizmos
 {
 	struct Vector2
 	{
-		double x;
-		double y;
+		int x;
+		int y;
 
-		Vector2(double _x = 0, double _y = 0)
+		Vector2(int _x = 0, int _y = 0)
 		{
 			x = _x;
 			y = _y;

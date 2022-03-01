@@ -12,7 +12,6 @@
 #pragma comment(lib,"sfml-system.lib") 
 #pragma comment(lib,"sfml-window.lib") 
 #pragma comment(lib,"sfml-network.lib") 
-#pragma comment(lib,"thor-d.lib")
 #endif 
 
 

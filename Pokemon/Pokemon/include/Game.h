@@ -5,9 +5,6 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include "Pokemon.h"
-#include "EnemyPokemon.h"
-#include "PokemonBar.h"
-#include "projectile.h"
 #include "SFMLDrawable.h"
 #include "SFMLInput.h"
 
@@ -26,27 +23,25 @@ private:
 	void processKeyReleases(sf::Event t_event);
 	void update(sf::Time t_deltaTime);
 	void render();
-	bool timer(float t_desiredTime, sf::Clock t_timer);
 
 	void loadTextures();
 	void collisions();
-	Vector2 getMousePosition();
+	sf::Vector2f getMousePosition();
 
 	//Mouse
-	Vector2 mousePosition;
+	sf::Vector2f mousePosition{ 0,0 };
 
 	//Player Pokemon
 	SFMLDrawable playerSprite;
 	SFMLInput playerInput;
 	std::unique_ptr<Pokemon> player;
-	
+
 
 	//Bush
 	sf::RectangleShape bushShape;
 
 	//Misc
 	sf::RenderWindow m_window; // main SFML window
-	sf::Clock attackTimer;
 
 	bool m_exitGame; // control exiting game
 

@@ -4,10 +4,7 @@
 class PokemonController
 {
 public:
-	PokemonController();
-
+	PokemonController() {}
 	void Update();
-	void setPosition(float t_x, float t_y);
-
 	Gizmos::Vector2 position;
 };

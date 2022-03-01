@@ -8,14 +8,11 @@ Pokemon::Pokemon(Drawable& _pokemon, Input& _input)
 
 void Pokemon::inilitalize()
 {
-	pokemon.setDrawableSize(300, 300);
-	pokemon.setDrawableColor(sf::Color::Blue);
-	controller.setPosition(100, 550);
 }
 
-void Pokemon::draw(sf::RenderWindow& t_window)
+void Pokemon::draw()
 {
-	pokemon.Draw(controller.position, t_window);
+	pokemon.Draw(controller.position.x, controller.position.y);
 }
 
 void Pokemon::update()
