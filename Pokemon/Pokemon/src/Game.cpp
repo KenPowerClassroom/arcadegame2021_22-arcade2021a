@@ -61,10 +61,6 @@ void Game::processEvents()
 		{
 			processKeys(newEvent);
 		}
-		if (sf::Event::KeyReleased == newEvent.type)
-		{
-			processKeyReleases(newEvent);
-		}
 		player.get()->pollInput();
 	}
 }
@@ -83,21 +79,6 @@ void Game::processKeys(sf::Event t_event)
 
 }
 
-/// <summary>
-/// Processes the keys released on the keyboard
-/// </summary>
-/// <param name="t_event">the key released</param>
-void Game::processKeyReleases(sf::Event t_event)
-{
-	if (sf::Event::KeyReleased == t_event.type)
-	{
-		switch (t_event.key.code)
-		{
-		case sf::Keyboard::S:
-			break;
-		}
-	}
-}
 
 /// <summary>
 /// Update the game
@@ -109,8 +90,6 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
-	mousePosition = getMousePosition();
-	//attackProjectile.moveBullet();
 }
 
 /// <summary>
@@ -163,17 +142,6 @@ void Game::collisions()
 
 }
 
-/// <summary>
-/// Finds the mouse position
-/// </summary>
-/// <returns>mouse coordinates</returns>
-sf::Vector2f Game::getMousePosition()
-{
-	mousePosition.x = (float)sf::Mouse::getPosition(m_window).x;
-	mousePosition.y = (float)sf::Mouse::getPosition(m_window).y;
-
-	return mousePosition;
-}
 
 //void Game::shootProjectile()
 //{

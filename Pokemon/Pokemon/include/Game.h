@@ -20,16 +20,11 @@ private:
 
 	void processEvents();
 	void processKeys(sf::Event t_event);
-	void processKeyReleases(sf::Event t_event);
 	void update(sf::Time t_deltaTime);
 	void render();
 
 	void loadTextures();
 	void collisions();
-	sf::Vector2f getMousePosition();
-
-	//Mouse
-	sf::Vector2f mousePosition{ 0,0 };
 
 	//Player Pokemon
 	SFMLDrawable playerSprite;
