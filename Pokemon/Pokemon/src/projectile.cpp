@@ -8,19 +8,16 @@ projectile::projectile()
 
 void projectile::inilitalize()
 {
-	shape.setSize(sf::Vector2f(50, 50));
-	shape.setPosition(sf::Vector2f{ -100, -100 });
-	shape.setFillColor(sf::Color::Blue);
+	attack.setDrawableSize(50, 50);
+	attack.setDrawableColor(sf::Color::Red);
 }
 
 void projectile::draw(sf::RenderWindow& t_window)
 {
-	t_window.draw(sprite);
-}
-
-void projectile::debugDraw(sf::RenderWindow& t_window)
-{
-	t_window.draw(shape);
+	if (active)
+	{
+		attack.Draw(position, t_window);
+	}
 }
 
 void projectile::changeType(int type)
@@ -28,37 +25,81 @@ void projectile::changeType(int type)
 	switch (type)
 	{
 	case 1:
-		shape.setFillColor(sf::Color::Blue);
+		attack.setDrawableColor(sf::Color::Red);
 		break;
 	case 2:
-		shape.setFillColor(sf::Color::Green);
+		attack.setDrawableColor(sf::Color::Green);
 		break;
 	case 3:
-		shape.setFillColor(sf::Color::Black);
+		attack.setDrawableColor(sf::Color::Blue);
 		break;
 	case 4:
-		shape.setFillColor(sf::Color::Red);
+		attack.setDrawableColor(sf::Color::Black);
 		break;
 	case 5:
-		shape.setFillColor(sf::Color::Magenta);
+		attack.setDrawableColor(sf::Color::Magenta);
 		break;
 	case 6:
-		shape.setFillColor(sf::Color::Yellow);
+		attack.setDrawableColor(sf::Color::Yellow);
 		break;
 	default:
 		break;
 	}
 }
 
+void projectile::setDirection(Vector2 t_mousePosition)
+{
+	if (t_mousePosition.x != 0 &&
+		t_mousePosition.y != 0)
+	{
+		direction = t_mousePosition - position;
+		float vectorLength = sqrt(direction.x * direction.x + direction.y * direction.y);
+		sf::Vector2f temp = { (float)direction.x, (float)direction.y };
+		temp = temp / vectorLength;
+		direction.x = temp.x;
+		direction.y = temp.y;
+
+		setRotation();
+	}
+}
+
+void projectile::setRotation()
+{
+	sf::Vector2f temp = { (float)direction.x, (float)direction.y };
+	angle = thor::polarAngle(temp);
+}
+
 void projectile::moveBullet()
 {
 	if (active)
 	{
-		float angle = thor::polarAngle(direction);
+		Vector2 temp = direction;
+		position = position + (direction * speed);
+		direction = temp;
+		attack.setDrawableRotation(angle - 90);
+	}
+}
 
+void projectile::shoot(Vector2 t_mousePosition)
+{
+	if (active == false)
+	{
+		setPos(attackStartPos);
+		setDirection(t_mousePosition);
+		active = true;
+	}
+}
 
-		position += direction * speed;
-		shape.setPosition(position);
-		shape.setRotation(angle - 90);
+void projectile::boundsCheck()
+{
+	if (active)
+	{
+		if (position.x > 1200 ||
+			position.x < 0 ||
+			position.y > 900 ||
+			position.y < 0)
+		{
+			active = false;
+		}
 	}
 }

@@ -144,10 +144,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\Drawable.h" />
+    <ClInclude Include="include\EnemyPokemon.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Gizmos.h" />
     <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\Pokemon.h" />
+    <ClInclude Include="include\PokemonBar.h" />
     <ClInclude Include="include\PokemonController.h" />
     <ClInclude Include="include\projectile.h" />
     <ClInclude Include="include\SFMLDrawable.h" />
@@ -158,6 +160,7 @@
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Pokemon.cpp" />
+    <ClCompile Include="src\PokemonBar.cpp" />
     <ClCompile Include="src\PokemonController.cpp" />
     <ClCompile Include="src\projectile.cpp" />
     <ClCompile Include="src\SFMLDrawable.cpp" />

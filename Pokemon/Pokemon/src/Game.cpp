@@ -80,7 +80,43 @@ void Game::processKeys(sf::Event t_event)
 	{
 		m_exitGame = true;
 	}
-	
+	if (sf::Keyboard::Space == t_event.key.code)
+	{
+		if (timer(0.5, attackTimer) == true)
+		{
+			playerAttack[currentAttack].shoot(mousePosition);
+			playerAttack[currentAttack].changeType(currentPokemon);
+			currentAttack++;
+			if (currentAttack > 9)
+			{
+				currentAttack = 0;
+			}
+		}
+	}
+	if (sf::Keyboard::Q == t_event.key.code)
+	{
+		currentPokemon = 1;
+	}
+	if (sf::Keyboard::W == t_event.key.code)
+	{
+		currentPokemon = 2;
+	}
+	if (sf::Keyboard::E == t_event.key.code)
+	{
+		currentPokemon = 3;
+	}
+	if (sf::Keyboard::A == t_event.key.code)
+	{
+		currentPokemon = 4;
+	}
+	if (sf::Keyboard::S == t_event.key.code)
+	{
+		currentPokemon = 5;
+	}
+	if (sf::Keyboard::D == t_event.key.code)
+	{
+		currentPokemon = 6;
+	}
 }
 
 /// <summary>
@@ -91,10 +127,16 @@ void Game::processKeyReleases(sf::Event t_event)
 {
 	if (sf::Event::KeyReleased == t_event.type)
 	{
-		switch (t_event.key.code)
+		if (sf::Keyboard::Q == t_event.key.code ||
+			sf::Keyboard::W == t_event.key.code ||
+			sf::Keyboard::E == t_event.key.code ||
+			sf::Keyboard::A == t_event.key.code ||
+			sf::Keyboard::S == t_event.key.code ||
+			sf::Keyboard::D == t_event.key.code
+			)
 		{
-		case sf::Keyboard::S:
-			break;
+			playerPokemon.changeType(currentPokemon);
+			pokemonBar.selectPokemon(currentPokemon);
 		}
 	}
 }
@@ -110,7 +152,15 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.close();
 	}
 	mousePosition = getMousePosition();
-	//attackProjectile.moveBullet();
+	for (size_t i = 0; i < MAX_ATTACKS; i++)
+	{
+		if (playerAttack[i].getActive())
+		{
+			playerAttack[i].moveBullet();
+		}
+	}
+	collisions();
+	enemyPokemon.update();
 }
 
 /// <summary>
@@ -120,54 +170,61 @@ void Game::render()
 {
 	m_window.clear(sf::Color::White);
 
-
-	//DEBUG
-	player->draw();
-	//attackProjectile.debugDraw(m_window);
 	m_window.draw(bushShape);
+	playerPokemon.draw(m_window);
+	enemyPokemon.draw(m_window);
+	for (size_t i = 0; i < MAX_ATTACKS; i++)
+	{
+		playerAttack[i].draw(m_window);
+	}
+	pokemonBar.draw(m_window);
 
 	m_window.display();
 }
 
+bool Game::timer(float t_desiredTime, sf::Clock t_timer)
+{
+ 	sf::Time timePasted = t_timer.getElapsedTime();
+	float secondsPasted = timePasted.asSeconds();
+	float desiredTimer = t_desiredTime;
+
+	if (secondsPasted >= desiredTimer)
+	{
+		t_timer.restart();
+		return true;
+	}
+	return false;
+}
+
 /// <summary>
-/// loads the background for the game
+/// sets the textures and sprites
 /// </summary>
 void Game::loadTextures()
 {
-	////Sprite Sheet Loading
-	//if (!textureSheet.loadFromFile("spritesheet.png"))
-	//{
-	//	std::cout << "problem loading sheet" << std::endl;
-	//}
-
-	////Font Loading
-	//if (!arial.loadFromFile("ariblk.ttf"))
-	//{
-	//	std::cout << "problem loading arial black font" << std::endl;
-	//}
-	//scoreText.setFont(arial);
-	//scoreText.setPosition(800, 0);
-	//scoreText.setCharacterSize(20U);
-	//scoreText.setFillColor(sf::Color(88, 88, 88));
-	//scoreText.setString("00000");
-
-
 	bushShape.setSize(sf::Vector2f(600, 300));
 	bushShape.setPosition(sf::Vector2f{ 500, 100 });
 	bushShape.setFillColor(sf::Color::Green);
-
 }
 
 void Game::collisions()
 {
-	
+	for (size_t i = 0; i < MAX_ATTACKS; i++)
+	{
+		playerAttack[i].boundsCheck();
+		if (enemyPokemon.getBounds().intersects(playerAttack[i].getBounds()) &&
+			playerAttack[i].getActive())
+		{
+			playerAttack[i].activeOff();
+			enemyPokemon.pokemonHit(playerPokemon.getType());
+		}
+	}
 }
 
 /// <summary>
 /// Finds the mouse position
 /// </summary>
 /// <returns>mouse coordinates</returns>
-sf::Vector2f Game::getMousePosition()
+Vector2 Game::getMousePosition()
 {
 	mousePosition.x = (float)sf::Mouse::getPosition(m_window).x;
 	mousePosition.y = (float)sf::Mouse::getPosition(m_window).y;
@@ -175,11 +232,3 @@ sf::Vector2f Game::getMousePosition()
 	return mousePosition;
 }
 
-//void Game::shootProjectile()
-//{
-	//mouseDirection = playerPokemon[currentPokemon].getPosition() - mousePosition;
-	//mouseDirection = thor::unitVector(mouseDirection);
-
-	//attackProjectile.setPos(playerPokemon[currentPokemon].getPosition());
-	//attackProjectile.setDirection(mouseDirection);
-//}

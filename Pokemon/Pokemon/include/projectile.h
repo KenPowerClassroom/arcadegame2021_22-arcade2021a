@@ -1,8 +1,11 @@
 #ifndef PROJECTILE_HPP
 #define PROJECTILE_HPP
 
-#include <SFML/Graphics.hpp>
+#include "SFMLDrawable.h"
+#include "Gizmos.h"
 #include "Thor/Vectors.hpp"
+
+using namespace Gizmos;
 
 class projectile
 {
@@ -10,31 +13,31 @@ public:
 	projectile();
 	void inilitalize();
 	void draw(sf::RenderWindow& t_window);
-	void debugDraw(sf::RenderWindow& t_window);
-
-	void setXPos(float t_x) { sprite.setPosition(t_x, sprite.getPosition().y); }
-	void setYPos(float t_y) { sprite.setPosition(sprite.getPosition().x, t_y); }
-	void setPos(sf::Vector2f t_position) { position = t_position; }
-	void setDirection(sf::Vector2f t_direction) { direction = t_direction; }
 	void changeType(int t_type);
 	void moveBullet();
+	void shoot(Vector2 t_mousePosition);
+	void boundsCheck();
+	void activeOff() { active = false; }
 
-	sf::Vector2f getPosition() { return sprite.getPosition(); }
-	sf::Sprite& getSprite() { return sprite; }
+	//Setters
+	void setPos(Vector2 t_position) { position = t_position; }
+	void setDirection(Vector2 t_mousePosition);
+	void setRotation();
+	//Getters
+	sf::FloatRect getBounds() { return attack.getBounds(); }
+	bool getActive() { return active; }
 
 private:
 
-	bool active; //Projectile active
-	sf::Vector2f position{ 1,1 };
-	sf::Vector2f direction{ 1,1 };
-	float speed{ 5 };
+	bool active{ false }; //Projectile active
+	Vector2 position{ -100, -100 };
+	Vector2 attackStartPos{ 250, 650 };
+	Vector2 direction{ -1, -1 };
+	float speed{ 10 };
+	float angle;
 
 
-	sf::Sprite sprite;
-	//sf::Texture& texture;
-
-	//DEBUG
-	sf::RectangleShape shape;
+	SFMLDrawable attack;
 
 };
 

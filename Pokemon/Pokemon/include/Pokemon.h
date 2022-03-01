@@ -9,13 +9,13 @@ class Pokemon
 public:
 	Pokemon(Drawable& _pokemon, Input& _input);
 	void inilitalize();
-	void draw();
+	void draw(sf::RenderWindow& t_window);
 	void update();
 	void pollInput();
 
-	int currentPokemon{ 0 };
 private:
-	
+
+	Type currentType{ Type::Fire };
 	PokemonController controller;
 	Drawable& pokemon;
 	Input& input;
