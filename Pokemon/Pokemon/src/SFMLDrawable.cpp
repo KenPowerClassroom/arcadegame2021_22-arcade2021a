@@ -12,3 +12,9 @@ void SFMLDrawable::Draw(int xPos, int yPos)
 	body.setPosition(xPos, yPos);
 	window.draw(body);
 }
+
+void SFMLDrawable::ChangeTexture(const char* path)
+{
+	tex.loadFromFile(path);
+	body.setTexture(tex);
+}

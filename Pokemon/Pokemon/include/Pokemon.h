@@ -13,8 +13,10 @@ public:
 	void update();
 	void pollInput();
 
-	int currentPokemon{ 0 };
+	void setPokemon(int);
+
 private:
+	int currentPokemon{ 0 };
 
 	PokemonController controller;
 	Drawable& pokemon;

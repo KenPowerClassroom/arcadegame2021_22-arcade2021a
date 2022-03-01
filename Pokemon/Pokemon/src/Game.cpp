@@ -8,7 +8,9 @@ Game::Game() :
 	m_exitGame{ false }, //when true game will exit
 	playerSprite{ "resources/images/pikachu.png",m_window },
 	playerInput{ m_window },
-	player{ std::make_unique<Pokemon>(playerSprite, playerInput) }
+	player{ std::make_unique<Pokemon>(playerSprite, playerInput) },
+	bushShape{ 600, 300, m_window },
+	selectedPokemon{ SFMLRectangle(25,25,m_window), SFMLRectangle(25,25,m_window), SFMLRectangle(25,25,m_window) }
 {
 	loadTextures(); // load background
 }
@@ -76,7 +78,27 @@ void Game::processKeys(sf::Event t_event)
 	{
 		m_exitGame = true;
 	}
-
+	if (playerInput.KeyPressed(playerInput.Num1))
+	{
+		player.get()->setPokemon(0);
+		selectedPokemon[0].SetColour(sf::Color::Yellow);
+		selectedPokemon[1].SetColour(sf::Color::Black);
+		selectedPokemon[2].SetColour(sf::Color::Black);
+	}
+	if (playerInput.KeyPressed(playerInput.Num2))
+	{
+		player.get()->setPokemon(1);
+		selectedPokemon[0].SetColour(sf::Color::Black);
+		selectedPokemon[1].SetColour(sf::Color::Red);
+		selectedPokemon[2].SetColour(sf::Color::Black);
+	}
+	if (playerInput.KeyPressed(playerInput.Num3))
+	{
+		player.get()->setPokemon(2);
+		selectedPokemon[0].SetColour(sf::Color::Black);
+		selectedPokemon[1].SetColour(sf::Color::Black);
+		selectedPokemon[2].SetColour(sf::Color::Blue);
+	}
 }
 
 
@@ -103,7 +125,11 @@ void Game::render()
 	//DEBUG
 	player->draw();
 	//attackProjectile.debugDraw(m_window);
-	m_window.draw(bushShape);
+	bushShape.Draw(500, 100);
+	for (int i = 0; i < 3; i++)
+	{
+		selectedPokemon[i].Draw(i * 50 + 50, 591);
+	}
 
 	m_window.display();
 }
@@ -113,41 +139,15 @@ void Game::render()
 /// </summary>
 void Game::loadTextures()
 {
-	////Sprite Sheet Loading
-	//if (!textureSheet.loadFromFile("spritesheet.png"))
-	//{
-	//	std::cout << "problem loading sheet" << std::endl;
-	//}
-
-	////Font Loading
-	//if (!arial.loadFromFile("ariblk.ttf"))
-	//{
-	//	std::cout << "problem loading arial black font" << std::endl;
-	//}
-	//scoreText.setFont(arial);
-	//scoreText.setPosition(800, 0);
-	//scoreText.setCharacterSize(20U);
-	//scoreText.setFillColor(sf::Color(88, 88, 88));
-	//scoreText.setString("00000");
-
-
-	bushShape.setSize(sf::Vector2f(600, 300));
-	bushShape.setPosition(sf::Vector2f{ 500, 100 });
-	bushShape.setFillColor(sf::Color::Green);
-
+	bushShape.SetColour(sf::Color::Green);
+	for (int i = 0; i < 3; i++)
+	{
+		selectedPokemon[i].SetColour(sf::Color::Black);
+	}
+	selectedPokemon[0].SetColour(sf::Color::Yellow);
 }
 
 void Game::collisions()
 {
 
 }
-
-
-//void Game::shootProjectile()
-//{
-	//mouseDirection = playerPokemon[currentPokemon].getPosition() - mousePosition;
-	//mouseDirection = thor::unitVector(mouseDirection);
-
-	//attackProjectile.setPos(playerPokemon[currentPokemon].getPosition());
-	//attackProjectile.setDirection(mouseDirection);
-//}

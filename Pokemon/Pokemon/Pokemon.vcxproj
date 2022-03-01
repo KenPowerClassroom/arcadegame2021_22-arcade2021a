@@ -152,9 +152,11 @@
     <ClInclude Include="include\projectile.h" />
     <ClInclude Include="include\SFMLDrawable.h" />
     <ClInclude Include="SFMLInput.h" />
+    <ClInclude Include="SFMLRectangle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SFMLInput.cpp" />
+    <ClCompile Include="SFMLRectangle.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Pokemon.cpp" />

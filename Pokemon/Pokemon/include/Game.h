@@ -6,6 +6,7 @@
 #include <memory>
 #include "Pokemon.h"
 #include "SFMLDrawable.h"
+#include "SFMLRectangle.h"
 #include "SFMLInput.h"
 
 class Game
@@ -32,8 +33,9 @@ private:
 	std::unique_ptr<Pokemon> player;
 
 
-	//Bush
-	sf::RectangleShape bushShape;
+	//Rectangles
+	SFMLRectangle bushShape;
+	SFMLRectangle selectedPokemon[3];
 
 	//Misc
 	sf::RenderWindow m_window; // main SFML window

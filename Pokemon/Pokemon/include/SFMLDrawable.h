@@ -11,4 +11,5 @@ private:
 public:
 	SFMLDrawable(const char* path, sf::RenderWindow& _window);
 	virtual void Draw(int xPos, int yPos);
+	virtual void ChangeTexture(const char* path);
 };
