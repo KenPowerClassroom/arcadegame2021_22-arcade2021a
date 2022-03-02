@@ -8,6 +8,7 @@
 #include "SFMLRectangle.h"
 #include "SFMLInput.h"
 #include "projectile.h"
+#include "Global.h"
 
 class Game
 {
