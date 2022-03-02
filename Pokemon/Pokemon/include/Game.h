@@ -1,13 +1,13 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include <iostream>
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include "Pokemon.h"
 #include "SFMLDrawable.h"
 #include "SFMLRectangle.h"
 #include "SFMLInput.h"
+#include "projectile.h"
 
 class Game
 {
@@ -31,7 +31,11 @@ private:
 	SFMLDrawable playerSprite;
 	SFMLInput playerInput;
 	std::unique_ptr<Pokemon> player;
-
+	//bullets
+	SFMLDrawable bulletSprites[10];
+	projectile bullets[10];
+	int currentBullet = 0;
+	sf::Clock cooldown;
 
 	//Rectangles
 	SFMLRectangle bushShape;

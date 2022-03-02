@@ -10,7 +10,17 @@ Game::Game() :
 	playerInput{ m_window },
 	player{ std::make_unique<Pokemon>(playerSprite, playerInput) },
 	bushShape{ 600, 300, m_window },
-	selectedPokemon{ SFMLRectangle(25,25,m_window), SFMLRectangle(25,25,m_window), SFMLRectangle(25,25,m_window) }
+	selectedPokemon{ SFMLRectangle(25,25,m_window), SFMLRectangle(25,25,m_window), SFMLRectangle(25,25,m_window) },
+	bulletSprites{ SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
+	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
+	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window), 
+	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window), 
+	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window) },
+	bullets{ projectile(bulletSprites[0]), projectile(bulletSprites[1]), 
+	projectile(bulletSprites[2]), projectile(bulletSprites[3]),
+	projectile(bulletSprites[4]), projectile(bulletSprites[5]), 
+	projectile(bulletSprites[6]), projectile(bulletSprites[7]),
+	projectile(bulletSprites[8]), projectile(bulletSprites[9]) }
 {
 	loadTextures(); // load background
 }
@@ -84,6 +94,10 @@ void Game::processKeys(sf::Event t_event)
 		selectedPokemon[0].SetColour(sf::Color::Yellow);
 		selectedPokemon[1].SetColour(sf::Color::Black);
 		selectedPokemon[2].SetColour(sf::Color::Black);
+		for (int i = 0; i < 10; i++)
+		{
+			bullets[i].changeType(0);
+		}
 	}
 	if (playerInput.KeyPressed(playerInput.Num2))
 	{
@@ -91,6 +105,10 @@ void Game::processKeys(sf::Event t_event)
 		selectedPokemon[0].SetColour(sf::Color::Black);
 		selectedPokemon[1].SetColour(sf::Color::Red);
 		selectedPokemon[2].SetColour(sf::Color::Black);
+		for (int i = 0; i < 10; i++)
+		{
+			bullets[i].changeType(1);
+		}
 	}
 	if (playerInput.KeyPressed(playerInput.Num3))
 	{
@@ -98,6 +116,22 @@ void Game::processKeys(sf::Event t_event)
 		selectedPokemon[0].SetColour(sf::Color::Black);
 		selectedPokemon[1].SetColour(sf::Color::Black);
 		selectedPokemon[2].SetColour(sf::Color::Blue);
+		for (int i = 0; i < 10; i++)
+		{
+			bullets[i].changeType(2);
+		}
+	}
+	if (playerInput.KeyPressed(playerInput.Space) && cooldown.getElapsedTime().asSeconds() > 0.5f)
+	{
+		bullets[currentBullet].setPos(Gizmos::Vector2(200, 700));
+		bullets[currentBullet].active = true;
+		bullets[currentBullet].calculateDirection(playerInput.GetMousePos());
+		currentBullet++;
+		if (currentBullet == 10)
+		{
+			currentBullet = 0;
+		}
+		cooldown.restart();
 	}
 }
 
@@ -111,6 +145,10 @@ void Game::update(sf::Time t_deltaTime)
 	if (m_exitGame)
 	{
 		m_window.close();
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		bullets[i].update();
 	}
 }
 
@@ -126,6 +164,10 @@ void Game::render()
 	player->draw();
 	//attackProjectile.debugDraw(m_window);
 	bushShape.Draw(500, 100);
+	for (int i = 0; i < 10; i++)
+	{
+		bullets[i].draw();
+	}
 	for (int i = 0; i < 3; i++)
 	{
 		selectedPokemon[i].Draw(i * 50 + 50, 591);

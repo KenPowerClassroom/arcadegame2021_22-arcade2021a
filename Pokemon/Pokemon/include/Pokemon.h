@@ -1,8 +1,6 @@
 #pragma once
 #include "Drawable.h"
 #include "Input.h"
-#include "PokemonController.h"
-#include <iostream>
 
 class Pokemon
 {
@@ -18,7 +16,6 @@ public:
 private:
 	int currentPokemon{ 0 };
 
-	PokemonController controller;
 	Drawable& pokemon;
 	Input& input;
 };

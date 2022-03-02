@@ -1,40 +1,30 @@
 #ifndef PROJECTILE_HPP
 #define PROJECTILE_HPP
 
-#include <SFML/Graphics.hpp>
-#include "Thor/Vectors.hpp"
+#include "Gizmos.h"
+#include "Drawable.h"
 
 class projectile
 {
 public:
-	projectile();
-	void inilitalize();
-	void draw(sf::RenderWindow& t_window);
-	void debugDraw(sf::RenderWindow& t_window);
+	projectile(Drawable& _bulletSprite);
+	void draw();
+	void update();
 
-	void setXPos(float t_x) { sprite.setPosition(t_x, sprite.getPosition().y); }
-	void setYPos(float t_y) { sprite.setPosition(sprite.getPosition().x, t_y); }
-	void setPos(sf::Vector2f t_position) { position = t_position; }
-	void setDirection(sf::Vector2f t_direction) { direction = t_direction; }
+	void setPos(Gizmos::Vector2 t_position) { position = Gizmos::Vector2f((float)t_position.x, (float)t_position.y); }
 	void changeType(int t_type);
 	void moveBullet();
+	void calculateDirection(Gizmos::Vector2 t_mousePos);
 
-	sf::Vector2f getPosition() { return sprite.getPosition(); }
-	sf::Sprite& getSprite() { return sprite; }
+	bool active; //Projectile active
 
 private:
 
-	bool active; //Projectile active
-	sf::Vector2f position{ 1,1 };
-	sf::Vector2f direction{ 1,1 };
-	float speed{ 5 };
+	Gizmos::Vector2f position{ 0,0 };
+	Gizmos::Vector2f direction{ 0,0 };
+	float speed{ 1.1f };
 
-
-	sf::Sprite sprite;
-	//sf::Texture& texture;
-
-	//DEBUG
-	sf::RectangleShape shape;
+	Drawable& bulletSprite;
 
 };
 

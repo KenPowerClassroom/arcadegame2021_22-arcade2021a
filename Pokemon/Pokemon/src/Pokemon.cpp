@@ -17,15 +17,10 @@ void Pokemon::draw()
 
 void Pokemon::update()
 {
-	controller.Update();
 }
 
 void Pokemon::pollInput()
 {
-	if (input.KeyPressed(input.Space))
-	{
-		std::cout << "Space pressed\n";
-	}
 }
 
 void Pokemon::setPokemon(int num)

@@ -1,64 +1,49 @@
 #include "projectile.h"
+#include <cmath>
+#include <iostream>
 
-
-projectile::projectile()
+projectile::projectile(Drawable& _bulletSprite) :
+	bulletSprite{ _bulletSprite }, active{ false }
 {
-	inilitalize();
 }
 
-void projectile::inilitalize()
+void projectile::draw()
 {
-	shape.setSize(sf::Vector2f(50, 50));
-	shape.setPosition(sf::Vector2f{ -100, -100 });
-	shape.setFillColor(sf::Color::Blue);
+	if (active) bulletSprite.Draw(position.x, position.y);
 }
 
-void projectile::draw(sf::RenderWindow& t_window)
+void projectile::update()
 {
-	t_window.draw(sprite);
-}
-
-void projectile::debugDraw(sf::RenderWindow& t_window)
-{
-	t_window.draw(shape);
+	if (active) moveBullet();
 }
 
 void projectile::changeType(int type)
 {
 	switch (type)
 	{
+	case 0:
+		bulletSprite.ChangeTexture("resources/images/electric.png");
+		break;
 	case 1:
-		shape.setFillColor(sf::Color::Blue);
+		bulletSprite.ChangeTexture("resources/images/fire.png");
 		break;
 	case 2:
-		shape.setFillColor(sf::Color::Green);
-		break;
-	case 3:
-		shape.setFillColor(sf::Color::Black);
-		break;
-	case 4:
-		shape.setFillColor(sf::Color::Red);
-		break;
-	case 5:
-		shape.setFillColor(sf::Color::Magenta);
-		break;
-	case 6:
-		shape.setFillColor(sf::Color::Yellow);
-		break;
-	default:
+		bulletSprite.ChangeTexture("resources/images/water.png");
 		break;
 	}
 }
 
 void projectile::moveBullet()
 {
-	if (active)
-	{
-		float angle = thor::polarAngle(direction);
+	position = position + (direction * speed);
+}
 
-
-		position += direction * speed;
-		shape.setPosition(position);
-		shape.setRotation(angle - 90);
-	}
+void projectile::calculateDirection(Gizmos::Vector2 t_mousePos)
+{
+	Gizmos::Vector2f mpos = Gizmos::Vector2f((float)t_mousePos.x, (float)t_mousePos.y);
+	direction = mpos - position;
+	float vectorLength = sqrt(direction.x * direction.x + direction.y * direction.y);
+	direction = direction / vectorLength;
+	
+	std::cout << direction.x << ", " << direction.y << std::endl;
 }
