@@ -13,16 +13,18 @@ Game::Game() :
 	selectedPokemon{ SFMLRectangle(25,25,m_window), SFMLRectangle(25,25,m_window), SFMLRectangle(25,25,m_window) },
 	bulletSprites{ SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
 	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
-	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window), 
-	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window), 
+	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
+	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
 	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window) },
-	bullets{ projectile(bulletSprites[0]), projectile(bulletSprites[1]), 
+	bullets{ projectile(bulletSprites[0]), projectile(bulletSprites[1]),
 	projectile(bulletSprites[2]), projectile(bulletSprites[3]),
-	projectile(bulletSprites[4]), projectile(bulletSprites[5]), 
+	projectile(bulletSprites[4]), projectile(bulletSprites[5]),
 	projectile(bulletSprites[6]), projectile(bulletSprites[7]),
-	projectile(bulletSprites[8]), projectile(bulletSprites[9]) }
+	projectile(bulletSprites[8]), projectile(bulletSprites[9]) },
+	m_menu(m_font)
 {
 	loadTextures(); // load background
+	initFonts();
 }
 
 /// <summary>
@@ -74,6 +76,14 @@ void Game::processEvents()
 			processKeys(newEvent);
 		}
 		player.get()->pollInput();
+		switch (m_gameState)
+		{
+		case GameState::MAIN_MENU:
+			m_menu.mouseInput(newEvent, m_gameState);
+			break;
+		default:
+			break;
+		}
 	}
 }
 
@@ -146,9 +156,23 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
-	for (int i = 0; i < 10; i++)
+	m_menu.update(m_gameState);
+	switch (m_gameState)
 	{
-		bullets[i].update();
+	case GameState::GAME_PLAY:
+		for (int i = 0; i < 10; i++)
+		{
+			bullets[i].update();
+		}
+		break;
+	case GameState::GAME_WIN:
+		break;
+	case GameState::GAME_LOSE:
+		break;
+	case GameState::EXIT:
+		m_exitGame = true;
+	default:
+		break;
 	}
 }
 
@@ -159,20 +183,27 @@ void Game::render()
 {
 	m_window.clear(sf::Color::White);
 
-
-	//DEBUG
-	player->draw();
-	//attackProjectile.debugDraw(m_window);
-	bushShape.Draw(500, 100);
-	for (int i = 0; i < 10; i++)
+	switch (m_gameState)
 	{
-		bullets[i].draw();
+	case GameState::GAME_PLAY:
+		player->draw();
+		//attackProjectile.debugDraw(m_window);
+		bushShape.Draw(500, 100);
+		for (int i = 0; i < 10; i++)
+		{
+			bullets[i].draw();
+		}
+		for (int i = 0; i < 3; i++)
+		{
+			selectedPokemon[i].Draw(i * 50 + 50, 591);
+		}
+		break;
+	case GameState::MAIN_MENU:
+		m_menu.render(m_window);
+		break;
+	default:
+		break;
 	}
-	for (int i = 0; i < 3; i++)
-	{
-		selectedPokemon[i].Draw(i * 50 + 50, 591);
-	}
-
 	m_window.display();
 }
 
@@ -192,4 +223,12 @@ void Game::loadTextures()
 void Game::collisions()
 {
 
+}
+
+void Game::initFonts()
+{
+	if (!m_font.loadFromFile("./resources/fonts/ariblk.ttf"))
+	{
+		std::cout << "Error loading Font\n";
+	}
 }

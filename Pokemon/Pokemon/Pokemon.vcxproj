@@ -42,13 +42,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -143,7 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Global.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="include\Drawable.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Gizmos.h" />
@@ -164,6 +164,25 @@
     <ClCompile Include="src\Pokemon.cpp" />
     <ClCompile Include="src\projectile.cpp" />
     <ClCompile Include="src\SFMLDrawable.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\images\BadGrass.png" />
+    <Image Include="resources\images\beedrill.png" />
+    <Image Include="resources\images\blastoise.png" />
+    <Image Include="resources\images\bulbasaur.png" />
+    <Image Include="resources\images\charizard.png" />
+    <Image Include="resources\images\charmander.png" />
+    <Image Include="resources\images\electric.png" />
+    <Image Include="resources\images\fire.png" />
+    <Image Include="resources\images\firepikachu.png" />
+    <Image Include="resources\images\NiceGrass.png" />
+    <Image Include="resources\images\pikachu.png" />
+    <Image Include="resources\images\squirtle.png" />
+    <Image Include="resources\images\water.png" />
+    <Image Include="resources\images\waterpikachu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\fonts\Gameplay.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

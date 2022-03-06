@@ -6,5 +6,6 @@ enum class GameState
     GAME_WIN,
     GAME_LOSE,
     MAIN_MENU,
+    OPTIONS,
     EXIT
 };

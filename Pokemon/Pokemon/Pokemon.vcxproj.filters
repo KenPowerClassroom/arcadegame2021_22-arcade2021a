@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\IMAGES">
+      <UniqueIdentifier>{a52f3bbc-524d-4218-9782-e0cf2b39d6f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\FONTS">
+      <UniqueIdentifier>{04a2be6a-b090-4c5c-ac8f-7e7537d35360}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Pokemon.h">
@@ -42,7 +48,7 @@
     <ClInclude Include="SFMLRectangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Global.h">
+    <ClInclude Include="GameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MainMenu.h">
@@ -74,5 +80,54 @@
     <ClCompile Include="MainMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\images\BadGrass.png">
+      <Filter>Resource Files\IMAGES</Filter>
+    </Image>
+    <Image Include="resources\images\beedrill.png">
+      <Filter>Resource Files\IMAGES</Filter>
+    </Image>
+    <Image Include="resources\images\blastoise.png">
+      <Filter>Resource Files\IMAGES</Filter>
+    </Image>
+    <Image Include="resources\images\bulbasaur.png">
+      <Filter>Resource Files\IMAGES</Filter>
+    </Image>
+    <Image Include="resources\images\charizard.png">
+      <Filter>Resource Files\IMAGES</Filter>
+    </Image>
+    <Image Include="resources\images\charmander.png">
+      <Filter>Resource Files\IMAGES</Filter>
+    </Image>
+    <Image Include="resources\images\electric.png">
+      <Filter>Resource Files\IMAGES</Filter>
+    </Image>
+    <Image Include="resources\images\fire.png">
+      <Filter>Resource Files\IMAGES</Filter>
+    </Image>
+    <Image Include="resources\images\firepikachu.png">
+      <Filter>Resource Files\IMAGES</Filter>
+    </Image>
+    <Image Include="resources\images\NiceGrass.png">
+      <Filter>Resource Files\IMAGES</Filter>
+    </Image>
+    <Image Include="resources\images\pikachu.png">
+      <Filter>Resource Files\IMAGES</Filter>
+    </Image>
+    <Image Include="resources\images\squirtle.png">
+      <Filter>Resource Files\IMAGES</Filter>
+    </Image>
+    <Image Include="resources\images\water.png">
+      <Filter>Resource Files\IMAGES</Filter>
+    </Image>
+    <Image Include="resources\images\waterpikachu.png">
+      <Filter>Resource Files\IMAGES</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\fonts\Gameplay.ttf">
+      <Filter>Resource Files\FONTS</Filter>
+    </Font>
   </ItemGroup>
 </Project>

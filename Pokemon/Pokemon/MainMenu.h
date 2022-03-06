@@ -1,7 +1,8 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Global.h"
+#include "GameState.h"
+#include <iostream>
 
 class MainMenu
 {
@@ -11,15 +12,24 @@ public:
 
 	void update(GameState const& m_gameState);
 	void render(sf::RenderWindow& m_window);
+	void mouseInput(sf::Event m_event, GameState & m_gameState);
 
 private:
+
+	void initSprites();
+	void initShapes();
+
+
 	sf::Text m_gameplayText;
 	sf::Text m_exitText;
 
 	sf::Sprite m_backgroundSprite;
 	sf::Texture m_backgroundTexture;
 
-	sf::RectangleShape m_boxRect;
-	sf::RectangleShape m_gameplayRect;
+	sf::Sprite m_outlineSprite;
+	sf::Texture m_outlineTexture;
+
+	sf::RectangleShape m_startRect;
+	sf::RectangleShape m_optionsRect;
 	sf::RectangleShape m_exitRect;
 };

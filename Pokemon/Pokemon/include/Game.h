@@ -8,7 +8,8 @@
 #include "SFMLRectangle.h"
 #include "SFMLInput.h"
 #include "projectile.h"
-#include "Global.h"
+#include "GameState.h"
+#include "MainMenu.h"
 
 class Game
 {
@@ -16,9 +17,13 @@ public:
 	Game();
 	~Game();
 
+	// GameState is set to MainMenu
+	GameState m_gameState{ GameState::MAIN_MENU };
+
 	void run();
 
 private:
+	MainMenu m_menu;
 
 	void processEvents();
 	void processKeys(sf::Event t_event);
@@ -27,6 +32,8 @@ private:
 
 	void loadTextures();
 	void collisions();
+
+	void initFonts();
 
 	//Player Pokemon
 	SFMLDrawable playerSprite;
@@ -41,6 +48,9 @@ private:
 	//Rectangles
 	SFMLRectangle bushShape;
 	SFMLRectangle selectedPokemon[3];
+
+	// Fonts
+	sf::Font m_font;
 
 	//Misc
 	sf::RenderWindow m_window; // main SFML window
