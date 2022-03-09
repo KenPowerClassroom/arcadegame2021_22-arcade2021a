@@ -18,7 +18,7 @@ private:
 
 	void initSprites();
 	void initShapes();
-
+	void initSexyMen();
 
 	sf::Text m_gameplayText;
 	sf::Text m_exitText;
@@ -28,6 +28,19 @@ private:
 
 	sf::Sprite m_outlineSprite;
 	sf::Texture m_outlineTexture;
+
+	sf::Sprite m_lukasfaceSprite;
+	sf::Texture m_lukasfaceTexture;
+
+	sf::Sprite m_conorfaceSprite;
+	sf::Texture m_conorfaceTexture;
+
+	sf::Sprite m_alinfaceSprite;
+	sf::Texture m_alinfaceTexture;
+
+	sf::Sprite m_patrickfaceSprite;
+	sf::Texture m_patrickfaceTexture;
+
 
 	sf::RectangleShape m_startRect;
 	sf::RectangleShape m_optionsRect;

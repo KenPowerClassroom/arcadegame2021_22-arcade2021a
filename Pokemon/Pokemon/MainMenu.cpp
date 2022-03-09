@@ -4,6 +4,7 @@ MainMenu::MainMenu(sf::Font& hudFont)
 {
     initSprites();
     initShapes();
+    initSexyMen();
 }
 
 MainMenu::~MainMenu()
@@ -24,6 +25,10 @@ void MainMenu::render(sf::RenderWindow& m_window)
     m_window.clear(sf::Color::Black);
     
     m_window.draw(m_outlineSprite);
+    m_window.draw(m_lukasfaceSprite);
+    m_window.draw(m_conorfaceSprite);
+    m_window.draw(m_alinfaceSprite);
+    m_window.draw(m_patrickfaceSprite);
     //m_window.draw(m_startRect);
     //m_window.draw(m_optionsRect);
     //m_window.draw(m_exitRect);
@@ -63,6 +68,38 @@ void MainMenu::initShapes()
     m_exitRect.setPosition(600, 510);
     m_exitRect.setOrigin(70, 10);
     m_exitRect.setFillColor(sf::Color::Yellow);
+}
+
+void MainMenu::initSexyMen()
+{
+    if (!m_lukasfaceTexture.loadFromFile("./resources//images//UI//Lukas_Face.png"))
+    {
+        std::cout << "Error loading image\n";
+    }
+    m_lukasfaceSprite.setTexture(m_lukasfaceTexture);
+    //m_lukasfaceSprite.setPosition(10, 10);
+    m_lukasfaceSprite.setScale(0.2, 0.2);
+    if (!m_conorfaceTexture.loadFromFile("./resources//images//UI//Conor_Face.png"))
+    {
+        std::cout << "Error loading image\n";
+    }
+    m_conorfaceSprite.setTexture(m_conorfaceTexture);
+    m_conorfaceSprite.setPosition(750, 10);
+    m_conorfaceSprite.setScale(0.7, 0.7);
+    if (!m_alinfaceTexture.loadFromFile("./resources//images//UI//Alin_Face.png"))
+    {
+        std::cout << "Error loading image\n";
+    }
+    m_alinfaceSprite.setTexture(m_alinfaceTexture);
+    m_alinfaceSprite.setPosition(10, 600);
+    m_alinfaceSprite.setScale(0.6, 0.6);
+    if (!m_patrickfaceTexture.loadFromFile("./resources//images//UI//Patrick_Face.png"))
+    {
+        std::cout << "Error loading image\n";
+    }
+    m_patrickfaceSprite.setTexture(m_patrickfaceTexture);
+    m_patrickfaceSprite.setPosition(700, 500);
+    m_patrickfaceSprite.setScale(0.6, 0.6);
 }
 
 /// <summary>
