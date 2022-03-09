@@ -77,7 +77,7 @@ void MainMenu::initSexyMen()
         std::cout << "Error loading image\n";
     }
     m_lukasfaceSprite.setTexture(m_lukasfaceTexture);
-    //m_lukasfaceSprite.setPosition(10, 10);
+    m_lukasfaceSprite.setPosition(0, -50);
     m_lukasfaceSprite.setScale(0.2, 0.2);
     if (!m_conorfaceTexture.loadFromFile("./resources//images//UI//Conor_Face.png"))
     {
@@ -91,14 +91,14 @@ void MainMenu::initSexyMen()
         std::cout << "Error loading image\n";
     }
     m_alinfaceSprite.setTexture(m_alinfaceTexture);
-    m_alinfaceSprite.setPosition(10, 600);
-    m_alinfaceSprite.setScale(0.6, 0.6);
+    m_alinfaceSprite.setPosition(10, 400);
+    m_alinfaceSprite.setScale(0.7, 0.7);
     if (!m_patrickfaceTexture.loadFromFile("./resources//images//UI//Patrick_Face.png"))
     {
         std::cout << "Error loading image\n";
     }
     m_patrickfaceSprite.setTexture(m_patrickfaceTexture);
-    m_patrickfaceSprite.setPosition(700, 500);
+    m_patrickfaceSprite.setPosition(850, 500);
     m_patrickfaceSprite.setScale(0.6, 0.6);
 }
 

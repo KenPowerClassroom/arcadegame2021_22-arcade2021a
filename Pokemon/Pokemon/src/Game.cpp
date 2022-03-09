@@ -25,6 +25,7 @@ Game::Game() :
 {
 	loadTextures(); // load background
 	initFonts();
+	initMusic();
 }
 
 /// <summary>
@@ -231,4 +232,16 @@ void Game::initFonts()
 	{
 		std::cout << "Error loading Font\n";
 	}
+}
+
+void Game::initMusic()
+{
+	if (!buffer.loadFromFile("./resources//music//PokemonCentreNight.wav"))
+	{
+		std::cout << "Error loading music" << std::endl;
+	}
+	sound.setBuffer(buffer);
+	sound.play();
+	sound.setLoop(true);
+	sound.setVolume(50);
 }

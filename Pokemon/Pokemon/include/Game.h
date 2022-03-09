@@ -10,6 +10,7 @@
 #include "projectile.h"
 #include "GameState.h"
 #include "MainMenu.h"
+#include "SFML/Audio.hpp"
 
 class Game
 {
@@ -35,6 +36,8 @@ private:
 
 	void initFonts();
 
+	void initMusic();
+
 	//Player Pokemon
 	SFMLDrawable playerSprite;
 	SFMLInput playerInput;
@@ -51,6 +54,9 @@ private:
 
 	// Fonts
 	sf::Font m_font;
+
+	sf::SoundBuffer buffer;
+	sf::Sound sound;
 
 	//Misc
 	sf::RenderWindow m_window; // main SFML window
