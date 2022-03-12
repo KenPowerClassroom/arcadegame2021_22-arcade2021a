@@ -48,13 +48,17 @@ private:
 	int currentBullet = 0;
 	sf::Clock cooldown;
 
+	//bush
+	SFMLDrawable bushShape;
+	SFMLDrawable background;
+
 	//Rectangles
-	SFMLRectangle bushShape;
 	SFMLRectangle selectedPokemon[3];
 
 	// Fonts
 	sf::Font m_font;
 
+	//music
 	sf::SoundBuffer buffer;
 	sf::Sound sound;
 

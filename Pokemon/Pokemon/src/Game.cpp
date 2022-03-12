@@ -9,7 +9,8 @@ Game::Game() :
 	playerSprite{ "resources/images/pikachu.png",m_window },
 	playerInput{ m_window },
 	player{ std::make_unique<Pokemon>(playerSprite, playerInput) },
-	bushShape{ 600, 300, m_window },
+	bushShape{ "./resources/images/world/grassSideView.png", m_window },
+	background{ "./resources/images/world/background.png", m_window },
 	selectedPokemon{ SFMLRectangle(25,25,m_window), SFMLRectangle(25,25,m_window), SFMLRectangle(25,25,m_window) },
 	bulletSprites{ SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
 	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
@@ -183,6 +184,7 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear(sf::Color::White);
+	background.Draw(0,0);
 
 	switch (m_gameState)
 	{
@@ -213,7 +215,6 @@ void Game::render()
 /// </summary>
 void Game::loadTextures()
 {
-	bushShape.SetColour(sf::Color::Green);
 	for (int i = 0; i < 3; i++)
 	{
 		selectedPokemon[i].SetColour(sf::Color::Black);
@@ -236,12 +237,12 @@ void Game::initFonts()
 
 void Game::initMusic()
 {
-	if (!buffer.loadFromFile("./resources//music//PokemonCentreNight.wav"))
+	if (!buffer.loadFromFile("./resources/music/PokemonCentreNight.wav"))
 	{
 		std::cout << "Error loading music" << std::endl;
 	}
 	sound.setBuffer(buffer);
 	sound.play();
 	sound.setLoop(true);
-	sound.setVolume(50);
+	sound.setVolume(1);
 }

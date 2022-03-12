@@ -13,7 +13,6 @@ MainMenu::~MainMenu()
 
 void MainMenu::update(GameState const& m_gameState)
 {
-
 }
 
 /// <summary>
@@ -22,8 +21,22 @@ void MainMenu::update(GameState const& m_gameState)
 /// <param name="m_window"></param>
 void MainMenu::render(sf::RenderWindow& m_window)
 {
-    m_window.clear(sf::Color::Black);
-    
+    sf::Vector2i pos = sf::Mouse::getPosition(m_window);
+    if (pos.x > 530 && pos.x < 670 &&
+        pos.y > 340 && pos.y < 400)
+    {
+        m_outlineTexture.loadFromFile("./resources/images/UI/GUI_2.png");
+    }
+    else if (pos.x > 530 && pos.x < 670 &&
+        pos.y > 500 && pos.y < 560)
+    {
+        m_outlineTexture.loadFromFile("./resources/images/UI/GUI_3.png");
+    }
+    else
+    {
+        m_outlineTexture.loadFromFile("./resources/images/UI/GUI_1.png");
+    }
+
     m_window.draw(m_outlineSprite);
     m_window.draw(m_lukasfaceSprite);
     m_window.draw(m_conorfaceSprite);
@@ -39,7 +52,7 @@ void MainMenu::render(sf::RenderWindow& m_window)
 /// </summary>
 void MainMenu::initSprites()
 {
-    if (!m_outlineTexture.loadFromFile("./resources//images//UI//GUI_1.png"))
+    if (!m_outlineTexture.loadFromFile("./resources/images/UI/GUI_1.png"))
     {
         std::cout << "Error - Loading Image\n";
     }
