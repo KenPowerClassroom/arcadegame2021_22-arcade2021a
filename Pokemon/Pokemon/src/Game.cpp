@@ -15,11 +15,9 @@ Game::Game() :
 	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
 	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
 	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
-	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window) },
-	m_menu(m_font)
+	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window) }
 {
 	loadTextures(); // load background
-	initFonts();
 	initMusic();
 }
 
@@ -180,9 +178,12 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
-	m_menu.update(m_gameState);
+	
 	switch (m_gameState)
 	{
+	case GameState::MAIN_MENU:
+		m_menu.update(m_gameState);
+		break;
 	case GameState::GAME_PLAY:
 		for (int i = 0; i < 10; i++)
 		{
@@ -190,6 +191,11 @@ void Game::update(sf::Time t_deltaTime)
 			enemyPokemon.checkCollisions(bullets[i]);
 		}
 		enemyPokemon.update();
+		if (enemyPokemon.scoreToAdd > 0)
+		{
+			gui.increaseScore(enemyPokemon.scoreToAdd);
+			enemyPokemon.scoreToAdd = 0;
+		}
 		processDamage();
 		break;
 	case GameState::GAME_WIN:
@@ -270,14 +276,6 @@ void Game::processDamage()
 		visability -= incrament;
 	}
 	damageEffect.setFillColor(sf::Color::Color(255, 0, 0, visability));
-}
-
-void Game::initFonts()
-{
-	if (!m_font.loadFromFile("./resources/fonts/ariblk.ttf"))
-	{
-		std::cout << "Error loading Font\n";
-	}
 }
 
 void Game::initMusic()

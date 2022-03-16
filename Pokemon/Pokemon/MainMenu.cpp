@@ -1,6 +1,6 @@
 #include "MainMenu.h"
 
-MainMenu::MainMenu(sf::Font& hudFont)
+MainMenu::MainMenu()
 {
     initSprites();
     initShapes();

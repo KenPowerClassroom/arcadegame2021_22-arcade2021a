@@ -16,6 +16,7 @@ struct Enemy
 	sf::Sprite danger;
 	sf::Clock readyTimer;
 	sf::Clock attackTimer;
+	sf::Clock shakeTimer;
 };
 
 class EnemyPokemon
@@ -30,11 +31,14 @@ public:
 	void setDamageText(int i, float currentDamage);
 	void pokemonHit(Type t_type, Type t_projectile, int i);
 	void moveDamageText();
+	void shake();
 	void attackPlayer();
 	bool playerRecieveDamage();
 
 	void update();
 	void draw(sf::RenderWindow& window);
+
+	int scoreToAdd = 0;
 
 private:
 	std::vector<Enemy> enemies;

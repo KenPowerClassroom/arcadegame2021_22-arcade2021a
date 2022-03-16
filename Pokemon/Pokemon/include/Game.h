@@ -39,8 +39,6 @@ private:
 	void collisions();
 	void processDamage();
 
-	void initFonts();
-
 	void initMusic();
 
 	//Pokemon selection bar
@@ -73,7 +71,6 @@ private:
 	float visability{ 0 };
 
 	// Fonts
-	sf::Font m_font;
 	GUI gui;
 
 	//music

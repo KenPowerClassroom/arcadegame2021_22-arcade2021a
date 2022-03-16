@@ -5,7 +5,7 @@ GUI::GUI()
 	font.loadFromFile("resources/fonts/Gameplay.ttf");
 	scoreText.setFont(font);
 	scoreText.setFillColor(sf::Color::Black);
-	scoreText.setString("Score: " + score);
+	scoreText.setString("Score: 0");
 	scoreText.setPosition(10, 20);
 }
 

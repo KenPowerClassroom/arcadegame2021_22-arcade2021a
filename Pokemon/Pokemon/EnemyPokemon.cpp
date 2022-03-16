@@ -83,6 +83,7 @@ void EnemyPokemon::update()
 	pokemonHighlight();
 	moveDamageText();
 	attackPlayer();
+	shake();
 }
 
 void EnemyPokemon::draw(sf::RenderWindow& window)
@@ -257,10 +258,12 @@ void EnemyPokemon::pokemonHit(Type t_type, Type t_projectile, int i)
 	else if (currentDamage > 20)
 	{
 		effectivity = "It's super effective!";
+		scoreToAdd += 20;
 	}
 	else
 	{
 		effectivity = "Nice!";
+		scoreToAdd += 10;
 	}
 
 	/// =========================================================================
@@ -270,6 +273,7 @@ void EnemyPokemon::pokemonHit(Type t_type, Type t_projectile, int i)
 	if (enemies[i].health <= 0)
 	{
 		enemies[i].alive = false;
+		scoreToAdd += 30;
 
 		enemies[i].body.setPosition(sf::Vector2f{ -1000, -1000 });
 		respawnTimer.restart();
@@ -325,6 +329,37 @@ void EnemyPokemon::moveDamageText()
 	}
 }
 
+void EnemyPokemon::shake()
+{
+	for (Enemy& e : enemies)
+	{
+		if (e.dangerous)
+		{
+			if (e.shakeTimer.getElapsedTime().asSeconds() < 0.4f)
+			{
+				if (e.shakeTimer.getElapsedTime().asSeconds() < 0.1f)
+				{
+					e.body.move(2,0);
+				}
+				else if (e.shakeTimer.getElapsedTime().asSeconds() > 0.1f
+					&& e.shakeTimer.getElapsedTime().asSeconds() < 0.2f)
+				{
+					e.body.move(-2, 0);
+				}
+				else if (e.shakeTimer.getElapsedTime().asSeconds() > 0.2f
+					&& e.shakeTimer.getElapsedTime().asSeconds() < 0.3f)
+				{
+					e.body.move(2, 0);
+				}
+				else if (e.shakeTimer.getElapsedTime().asSeconds() > 0.3f)
+				{
+					e.body.move(-2, 0);
+				}
+			}
+		}
+	}
+}
+
 void EnemyPokemon::attackPlayer()
 {
 	for (Enemy& e : enemies)
@@ -333,6 +368,7 @@ void EnemyPokemon::attackPlayer()
 		if (timer(3, e.readyTimer) &&
 			e.alive)
 		{
+			if (!e.dangerous) e.shakeTimer.restart();
 			e.dangerous = true;
 
 			//This is for when it resets and hurts the player
@@ -342,6 +378,7 @@ void EnemyPokemon::attackPlayer()
 				e.dangerous = false;
 				e.readyTimer.restart();
 				e.attackTimer.restart();
+				e.shakeTimer.restart();
 			}
 		}
 	}

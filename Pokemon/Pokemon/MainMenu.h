@@ -7,7 +7,7 @@
 class MainMenu
 {
 public:
-	MainMenu(sf::Font& hudFont);
+	MainMenu();
 	~MainMenu();
 
 	void update(GameState const& m_gameState);

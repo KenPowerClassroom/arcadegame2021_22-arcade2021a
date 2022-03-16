@@ -7,7 +7,10 @@ public:
 	GUI();
 	void update();
 	void draw(sf::RenderWindow& window);
-	void increaseScore(int _score) { score += _score; scoreText.setString("Score: " + score); }
+	void increaseScore(int _score) { 
+		score += _score; 
+		scoreText.setString("Score: " + std::to_string(score));
+	}
 
 private:
 	sf::Font font;
