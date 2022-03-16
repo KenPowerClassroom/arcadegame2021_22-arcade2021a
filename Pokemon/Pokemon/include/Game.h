@@ -10,6 +10,7 @@
 #include "projectile.h"
 #include "GameState.h"
 #include "MainMenu.h"
+#include "EnemyPokemon.h"
 #include "SFML/Audio.hpp"
 
 class Game
@@ -51,6 +52,8 @@ private:
 	//bush
 	SFMLDrawable bushShape;
 	SFMLDrawable background;
+
+	EnemyPokemon enemies;
 
 	//Rectangles
 	SFMLRectangle selectedPokemon[3];
