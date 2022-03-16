@@ -57,7 +57,11 @@
     <ClInclude Include="EnemyPokemon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Types.h">
+=======
+    <ClInclude Include="GUI.h">
+>>>>>>> 0f068a7fecd225717b98f34b1efe57dab7fe42b5
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -87,6 +91,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EnemyPokemon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

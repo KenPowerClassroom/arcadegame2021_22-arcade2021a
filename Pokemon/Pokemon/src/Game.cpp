@@ -166,7 +166,11 @@ void Game::update(sf::Time t_deltaTime)
 			bullets[i].update();
 			enemyPokemon.checkCollisions(bullets[i]);
 		}
+<<<<<<< HEAD
 		enemyPokemon.update();
+=======
+		enemies.update();
+>>>>>>> 0f068a7fecd225717b98f34b1efe57dab7fe42b5
 		break;
 	case GameState::GAME_WIN:
 		break;
@@ -202,6 +206,8 @@ void Game::render()
 		{
 			selectedPokemon[i].Draw(i * 50 + 50, 591);
 		}
+		enemies.draw(m_window);
+		gui.draw(m_window);
 		break;
 	case GameState::MAIN_MENU:
 		m_menu.render(m_window);

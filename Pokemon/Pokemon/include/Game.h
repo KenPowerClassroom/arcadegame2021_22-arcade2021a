@@ -11,7 +11,9 @@
 #include "projectile.h"
 #include "GameState.h"
 #include "MainMenu.h"
+#include "EnemyPokemon.h"
 #include "SFML/Audio.hpp"
+#include "GUI.h"
 
 class Game
 {
@@ -57,11 +59,14 @@ private:
 	SFMLDrawable bushShape;
 	SFMLDrawable background;
 
+	EnemyPokemon enemies;
+
 	//Rectangles
 	SFMLRectangle selectedPokemon[3];
 
 	// Fonts
 	sf::Font m_font;
+	GUI gui;
 
 	//music
 	sf::SoundBuffer buffer;
