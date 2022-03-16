@@ -155,6 +155,7 @@
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="SFMLInput.h" />
     <ClInclude Include="SFMLRectangle.h" />
+    <ClInclude Include="Types.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EnemyPokemon.cpp" />

@@ -17,11 +17,6 @@ Game::Game() :
 	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
 	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
 	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window) },
-	bullets{ projectile(bulletSprites[0]), projectile(bulletSprites[1]),
-	projectile(bulletSprites[2]), projectile(bulletSprites[3]),
-	projectile(bulletSprites[4]), projectile(bulletSprites[5]),
-	projectile(bulletSprites[6]), projectile(bulletSprites[7]),
-	projectile(bulletSprites[8]), projectile(bulletSprites[9]) },
 	m_menu(m_font)
 {
 	loadTextures(); // load background
@@ -145,6 +140,10 @@ void Game::processKeys(sf::Event t_event)
 		}
 		cooldown.restart();
 	}
+	if (playerInput.KeyPressed(playerInput.S))
+	{
+		enemyPokemon.Spawn();
+	}
 }
 
 
@@ -165,7 +164,9 @@ void Game::update(sf::Time t_deltaTime)
 		for (int i = 0; i < 10; i++)
 		{
 			bullets[i].update();
+			enemyPokemon.checkCollisions(bullets[i]);
 		}
+		enemyPokemon.update();
 		break;
 	case GameState::GAME_WIN:
 		break;
@@ -192,9 +193,10 @@ void Game::render()
 		player->draw();
 		//attackProjectile.debugDraw(m_window);
 		bushShape.Draw(500, 100);
+		enemyPokemon.draw(m_window);
 		for (int i = 0; i < 10; i++)
 		{
-			bullets[i].draw();
+			bullets[i].draw(m_window);
 		}
 		for (int i = 0; i < 3; i++)
 		{

@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include "Pokemon.h"
+#include "EnemyPokemon.h"
 #include "SFMLDrawable.h"
 #include "SFMLRectangle.h"
 #include "SFMLInput.h"
@@ -42,6 +43,10 @@ private:
 	SFMLDrawable playerSprite;
 	SFMLInput playerInput;
 	std::unique_ptr<Pokemon> player;
+
+	//Enemy Pokemon
+	EnemyPokemon enemyPokemon;
+
 	//bullets
 	SFMLDrawable bulletSprites[10];
 	projectile bullets[10];
