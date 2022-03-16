@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include "Pokemon.h"
+#include "EnemyPokemon.h"
 #include "SFMLDrawable.h"
 #include "SFMLRectangle.h"
 #include "SFMLInput.h"
@@ -11,6 +12,7 @@
 #include "GameState.h"
 #include "MainMenu.h"
 #include "EnemyPokemon.h"
+#include "PokemonBar.h"
 #include "SFML/Audio.hpp"
 #include "GUI.h"
 
@@ -35,15 +37,23 @@ private:
 
 	void loadTextures();
 	void collisions();
+	void processDamage();
 
 	void initFonts();
 
 	void initMusic();
 
+	//Pokemon selection bar
+	PokemonBar bar;
+
 	//Player Pokemon
 	SFMLDrawable playerSprite;
 	SFMLInput playerInput;
 	std::unique_ptr<Pokemon> player;
+
+	//Enemy Pokemon
+	EnemyPokemon enemyPokemon;
+
 	//bullets
 	SFMLDrawable bulletSprites[10];
 	projectile bullets[10];
@@ -54,10 +64,13 @@ private:
 	SFMLDrawable bushShape;
 	SFMLDrawable background;
 
-	EnemyPokemon enemies;
+	//Terrain
+	sf::Sprite terrain;
+	sf::Texture terrainTexture;
 
-	//Rectangles
-	SFMLRectangle selectedPokemon[3];
+	//Damage Effect
+	sf::RectangleShape damageEffect;
+	float visability{ 0 };
 
 	// Fonts
 	sf::Font m_font;

@@ -2,14 +2,15 @@
 #include <cmath>
 #include <iostream>
 
-projectile::projectile(Drawable& _bulletSprite) :
-	bulletSprite{ _bulletSprite }, active{ false }
+projectile::projectile() :
+ active{ false }
 {
+	init();
 }
 
-void projectile::draw()
+void projectile::draw(sf::RenderWindow& m_window)
 {
-	if (active) bulletSprite.Draw(position.x, position.y);
+	if (active) m_window.draw(bulletSprite);
 }
 
 void projectile::update()
@@ -17,25 +18,38 @@ void projectile::update()
 	if (active) moveBullet();
 }
 
+void projectile::init()
+{
+	bulletTexture.loadFromFile("resources/images/electric.png");
+	bulletSprite.setTexture(bulletTexture);
+}
+
 void projectile::changeType(int type)
 {
 	switch (type)
 	{
 	case 0:
-		bulletSprite.ChangeTexture("resources/images/electric.png");
+		bulletTexture.loadFromFile("resources/images/electric.png");
+		m_type = Type::Electric;
 		break;
 	case 1:
-		bulletSprite.ChangeTexture("resources/images/fire.png");
+		bulletTexture.loadFromFile("resources/images/fire.png");
+		m_type = Type::Fire;
 		break;
 	case 2:
-		bulletSprite.ChangeTexture("resources/images/water.png");
+		bulletTexture.loadFromFile("resources/images/water.png");
+		m_type = Type::Water;
 		break;
 	}
 }
 
 void projectile::moveBullet()
 {
-	position = position + (direction * speed);
+	if (active)
+	{
+		position = position + (direction * speed);
+		bulletSprite.setPosition(position.x, position.y);
+	}
 }
 
 void projectile::calculateDirection(Gizmos::Vector2 t_mousePos)
