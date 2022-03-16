@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClInclude Include="EnemyPokemon.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="GUI.h" />
     <ClInclude Include="include\Drawable.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Gizmos.h" />
@@ -158,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EnemyPokemon.cpp" />
+    <ClCompile Include="GUI.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="SFMLInput.cpp" />
     <ClCompile Include="SFMLRectangle.cpp" />

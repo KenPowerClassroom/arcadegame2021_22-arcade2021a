@@ -12,6 +12,7 @@
 #include "MainMenu.h"
 #include "EnemyPokemon.h"
 #include "SFML/Audio.hpp"
+#include "GUI.h"
 
 class Game
 {
@@ -60,6 +61,7 @@ private:
 
 	// Fonts
 	sf::Font m_font;
+	GUI gui;
 
 	//music
 	sf::SoundBuffer buffer;

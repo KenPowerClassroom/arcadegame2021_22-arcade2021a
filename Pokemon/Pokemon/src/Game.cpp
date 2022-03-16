@@ -202,6 +202,7 @@ void Game::render()
 			selectedPokemon[i].Draw(i * 50 + 50, 591);
 		}
 		enemies.draw(m_window);
+		gui.draw(m_window);
 		break;
 	case GameState::MAIN_MENU:
 		m_menu.render(m_window);
