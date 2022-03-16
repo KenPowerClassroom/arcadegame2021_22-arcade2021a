@@ -9,8 +9,13 @@ struct Enemy
 {
 	sf::Sprite body;
 	bool alive = true;
-	float health{ 100 };
+	bool dangerous = false;
+	bool attacking = false;
+	float health{ 50 };
 	Type type{ Type::Fire };
+	sf::Sprite danger;
+	sf::Clock readyTimer;
+	sf::Clock attackTimer;
 };
 
 class EnemyPokemon
@@ -25,6 +30,8 @@ public:
 	void setDamageText(int i, float currentDamage);
 	void pokemonHit(Type t_type, Type t_projectile, int i);
 	void moveDamageText();
+	void attackPlayer();
+	bool playerRecieveDamage();
 
 	void update();
 	void draw(sf::RenderWindow& window);
@@ -38,5 +45,6 @@ private:
 	sf::Clock highlightTimer;
 	sf::Font font;
 	sf::Text damageText;
+	sf::Texture dangerTexture;
 };
 

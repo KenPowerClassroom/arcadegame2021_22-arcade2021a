@@ -1,149 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Resource Files\IMAGES">
-      <UniqueIdentifier>{a52f3bbc-524d-4218-9782-e0cf2b39d6f9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\FONTS">
-      <UniqueIdentifier>{04a2be6a-b090-4c5c-ac8f-7e7537d35360}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="EnemyPokemon.cpp" />
+    <ClCompile Include="GUI.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="SFMLInput.cpp" />
+    <ClCompile Include="SFMLRectangle.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Pokemon.cpp" />
+    <ClCompile Include="src\projectile.cpp" />
+    <ClCompile Include="src\SFMLDrawable.cpp" />
+    <ClCompile Include="PokemonBar.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Pokemon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\projectile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Drawable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SFMLDrawable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Gizmos.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Input.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SFMLInput.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SFMLRectangle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyPokemon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Types.h">
-=======
-    <ClInclude Include="GUI.h">
->>>>>>> 0f068a7fecd225717b98f34b1efe57dab7fe42b5
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include="EnemyPokemon.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="GUI.h" />
+    <ClInclude Include="include\Drawable.h" />
+    <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\Gizmos.h" />
+    <ClInclude Include="include\Input.h" />
+    <ClInclude Include="include\Pokemon.h" />
+    <ClInclude Include="include\projectile.h" />
+    <ClInclude Include="include\SFMLDrawable.h" />
+    <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="SFMLInput.h" />
+    <ClInclude Include="SFMLRectangle.h" />
+    <ClInclude Include="Types.h" />
+    <ClInclude Include="PokemonBar.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Pokemon.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\projectile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SFMLDrawable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SFMLInput.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SFMLRectangle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MainMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyPokemon.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GUI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <Image Include="resources\images\BadGrass.png" />
+    <Image Include="resources\images\beedrill.png" />
+    <Image Include="resources\images\blastoise.png" />
+    <Image Include="resources\images\bulbasaur.png" />
+    <Image Include="resources\images\charizard.png" />
+    <Image Include="resources\images\charmander.png" />
+    <Image Include="resources\images\electric.png" />
+    <Image Include="resources\images\fire.png" />
+    <Image Include="resources\images\firepikachu.png" />
+    <Image Include="resources\images\NiceGrass.png" />
+    <Image Include="resources\images\pikachu.png" />
+    <Image Include="resources\images\squirtle.png" />
+    <Image Include="resources\images\water.png" />
+    <Image Include="resources\images\waterpikachu.png" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resources\images\BadGrass.png">
-      <Filter>Resource Files\IMAGES</Filter>
-    </Image>
-    <Image Include="resources\images\beedrill.png">
-      <Filter>Resource Files\IMAGES</Filter>
-    </Image>
-    <Image Include="resources\images\blastoise.png">
-      <Filter>Resource Files\IMAGES</Filter>
-    </Image>
-    <Image Include="resources\images\bulbasaur.png">
-      <Filter>Resource Files\IMAGES</Filter>
-    </Image>
-    <Image Include="resources\images\charizard.png">
-      <Filter>Resource Files\IMAGES</Filter>
-    </Image>
-    <Image Include="resources\images\charmander.png">
-      <Filter>Resource Files\IMAGES</Filter>
-    </Image>
-    <Image Include="resources\images\electric.png">
-      <Filter>Resource Files\IMAGES</Filter>
-    </Image>
-    <Image Include="resources\images\fire.png">
-      <Filter>Resource Files\IMAGES</Filter>
-    </Image>
-    <Image Include="resources\images\firepikachu.png">
-      <Filter>Resource Files\IMAGES</Filter>
-    </Image>
-    <Image Include="resources\images\NiceGrass.png">
-      <Filter>Resource Files\IMAGES</Filter>
-    </Image>
-    <Image Include="resources\images\pikachu.png">
-      <Filter>Resource Files\IMAGES</Filter>
-    </Image>
-    <Image Include="resources\images\squirtle.png">
-      <Filter>Resource Files\IMAGES</Filter>
-    </Image>
-    <Image Include="resources\images\water.png">
-      <Filter>Resource Files\IMAGES</Filter>
-    </Image>
-    <Image Include="resources\images\waterpikachu.png">
-      <Filter>Resource Files\IMAGES</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="resources\fonts\Gameplay.ttf">
-      <Filter>Resource Files\FONTS</Filter>
-    </Font>
+    <Font Include="resources\fonts\Gameplay.ttf" />
   </ItemGroup>
 </Project>

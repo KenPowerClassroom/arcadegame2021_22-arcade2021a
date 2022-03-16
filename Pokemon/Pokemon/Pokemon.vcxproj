@@ -154,6 +154,7 @@
     <ClInclude Include="include\projectile.h" />
     <ClInclude Include="include\SFMLDrawable.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="PokemonBar.h" />
     <ClInclude Include="SFMLInput.h" />
     <ClInclude Include="SFMLRectangle.h" />
     <ClInclude Include="Types.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="EnemyPokemon.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="PokemonBar.cpp" />
     <ClCompile Include="SFMLInput.cpp" />
     <ClCompile Include="SFMLRectangle.cpp" />
     <ClCompile Include="src\Game.cpp" />

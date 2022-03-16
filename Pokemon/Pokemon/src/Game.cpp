@@ -11,7 +11,6 @@ Game::Game() :
 	player{ std::make_unique<Pokemon>(playerSprite, playerInput) },
 	bushShape{ "./resources/images/world/grassSideView.png", m_window },
 	background{ "./resources/images/world/background.png", m_window },
-	selectedPokemon{ SFMLRectangle(25,25,m_window), SFMLRectangle(25,25,m_window), SFMLRectangle(25,25,m_window) },
 	bulletSprites{ SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
 	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
 	SFMLDrawable("resources/images/electric.png",m_window), SFMLDrawable("resources/images/electric.png",m_window),
@@ -95,34 +94,58 @@ void Game::processKeys(sf::Event t_event)
 	{
 		m_exitGame = true;
 	}
-	if (playerInput.KeyPressed(playerInput.Num1))
+	if (playerInput.KeyPressed(playerInput.Q))
 	{
 		player.get()->setPokemon(0);
-		selectedPokemon[0].SetColour(sf::Color::Yellow);
-		selectedPokemon[1].SetColour(sf::Color::Black);
-		selectedPokemon[2].SetColour(sf::Color::Black);
+		bar.selectPokemon(1);
 		for (int i = 0; i < 10; i++)
 		{
-			bullets[i].changeType(0);
+			if (bullets[i].active == false)
+			{
+				bullets[i].changeType(0);
+			}
 		}
 	}
-	if (playerInput.KeyPressed(playerInput.Num2))
+	if (playerInput.KeyPressed(playerInput.W))
 	{
 		player.get()->setPokemon(1);
-		selectedPokemon[0].SetColour(sf::Color::Black);
-		selectedPokemon[1].SetColour(sf::Color::Red);
-		selectedPokemon[2].SetColour(sf::Color::Black);
+		bar.selectPokemon(2);
 		for (int i = 0; i < 10; i++)
 		{
 			bullets[i].changeType(1);
 		}
 	}
-	if (playerInput.KeyPressed(playerInput.Num3))
+	if (playerInput.KeyPressed(playerInput.E))
 	{
 		player.get()->setPokemon(2);
-		selectedPokemon[0].SetColour(sf::Color::Black);
-		selectedPokemon[1].SetColour(sf::Color::Black);
-		selectedPokemon[2].SetColour(sf::Color::Blue);
+		bar.selectPokemon(3);
+		for (int i = 0; i < 10; i++)
+		{
+			bullets[i].changeType(2);
+		}
+	}
+	if (playerInput.KeyPressed(playerInput.A))
+	{
+		player.get()->setPokemon(3);
+		bar.selectPokemon(4);
+		for (int i = 0; i < 10; i++)
+		{
+			bullets[i].changeType(2);
+		}
+	}
+	if (playerInput.KeyPressed(playerInput.S))
+	{
+		player.get()->setPokemon(4);
+		bar.selectPokemon(5);
+		for (int i = 0; i < 10; i++)
+		{
+			bullets[i].changeType(2);
+		}
+	}
+	if (playerInput.KeyPressed(playerInput.D))
+	{
+		player.get()->setPokemon(5);
+		bar.selectPokemon(6);
 		for (int i = 0; i < 10; i++)
 		{
 			bullets[i].changeType(2);
@@ -166,11 +189,8 @@ void Game::update(sf::Time t_deltaTime)
 			bullets[i].update();
 			enemyPokemon.checkCollisions(bullets[i]);
 		}
-<<<<<<< HEAD
 		enemyPokemon.update();
-=======
-		enemies.update();
->>>>>>> 0f068a7fecd225717b98f34b1efe57dab7fe42b5
+		processDamage();
 		break;
 	case GameState::GAME_WIN:
 		break;
@@ -194,7 +214,8 @@ void Game::render()
 	switch (m_gameState)
 	{
 	case GameState::GAME_PLAY:
-		player->draw();
+		m_window.draw(terrain);
+		player->draw(m_window);
 		//attackProjectile.debugDraw(m_window);
 		bushShape.Draw(500, 100);
 		enemyPokemon.draw(m_window);
@@ -202,12 +223,9 @@ void Game::render()
 		{
 			bullets[i].draw(m_window);
 		}
-		for (int i = 0; i < 3; i++)
-		{
-			selectedPokemon[i].Draw(i * 50 + 50, 591);
-		}
-		enemies.draw(m_window);
+		bar.draw(m_window);
 		gui.draw(m_window);
+		m_window.draw(damageEffect);
 		break;
 	case GameState::MAIN_MENU:
 		m_menu.render(m_window);
@@ -223,16 +241,35 @@ void Game::render()
 /// </summary>
 void Game::loadTextures()
 {
-	for (int i = 0; i < 3; i++)
+	if (!terrainTexture.loadFromFile("./resources/images/terrain.png"))
 	{
-		selectedPokemon[i].SetColour(sf::Color::Black);
+		std::cout << "Error loading terrain image\n";
 	}
-	selectedPokemon[0].SetColour(sf::Color::Yellow);
+	terrain.setTexture(terrainTexture);
+	terrain.setTextureRect(sf::IntRect{ 0,0,191,28 });
+	terrain.setPosition(0,820);
+	terrain.setScale(3,3);
+
+	damageEffect.setSize(sf::Vector2f{ 1200,900 });
 }
 
 void Game::collisions()
 {
 
+}
+
+void Game::processDamage()
+{
+	if (enemyPokemon.playerRecieveDamage())
+	{
+		visability = 255;
+	}
+	if (visability > 1)
+	{
+		int incrament = 3;
+		visability -= incrament;
+	}
+	damageEffect.setFillColor(sf::Color::Color(255, 0, 0, visability));
 }
 
 void Game::initFonts()
